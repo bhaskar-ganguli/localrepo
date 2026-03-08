@@ -1,0 +1,9 @@
+[intranetweb]
+node1
+
+[internetweb]
+node2
+
+[web:children]
+intranetweb
+internetweb

@@ -1,0 +1,5 @@
+---
+- name: Use appache role playbook
+  hosts: node1
+  roles:
+    - appache

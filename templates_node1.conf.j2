@@ -1,0 +1,21 @@
+# Apache Virtual Host Configuration for node1
+# Managed by Administrator
+
+<VirtualHost *:80>
+
+    ServerName node1.example.com
+    ServerAdmin control@example.com
+
+    # Document Root
+    DocumentRoot /var/www/html/node1
+
+    # Directory Permissions
+    <Directory /var/www/html/node1>
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+    </Directory>
+
+    # Log Files
+    ErrorLog /var/log/httpd/node1_error.log
+    CustomLog /var/log/httpd/node1_access.log combined

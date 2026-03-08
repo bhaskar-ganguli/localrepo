@@ -1,0 +1,26 @@
+# tasks file for appache
+- name: Ensure appache is installed
+  ansible.builtin.dnf:
+    name: httpd
+    state: latest
+- name: Ensure httpd service is Started
+  ansible.builtin.service:
+    name: httpd
+    state: started
+    enabled: yes
+- name: index.html file is placed in document root
+  ansible.builtin.copy:
+    src: index.html
+    dest: /var/www/html/index.html
+    owner: root
+    group: root
+    mode: 0644  
+- name: node1.conf file is installed
+  ansible.builtin.template:
+    src: node1.conf.j2
+    dest: /etc/httpd/conf.d/node1.conf
+    owner: root
+    group: root
+    mode: 0644      
+  notify: 
+    - restart httpd
